@@ -71,6 +71,5 @@ public class Main {
         printOptions();
     }
 
-// TODO: 14.10.2022 odłączyc wifi od kompa, zrobić samemu test odpalić dowolny scenariusz prawidłowy, wyskoczy info przekazano błędne dane, naprawić to jak nie będzie internetu ma rzucać wyjątek LostConnectionException
 
 }
