@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import pl.kurs.exchangeratetapp.config.AppConfig;
 import pl.kurs.exchangeratetapp.exceptions.InvalidInputDataException;
+import pl.kurs.exchangeratetapp.exceptions.LostConnectionException;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ public class RateServiceTest {
     //todo kończymy na kolejnej lekcji
 
     @Test
-    public void shouldReturn3coma9RateForUsdPlnPair() throws IOException, InvalidInputDataException {
+    public void shouldReturn3coma9RateForUsdPlnPair() throws IOException, InvalidInputDataException, LostConnectionException {
         //given
 
         String baseHttp = AppConfig.EXCHANGERATESAPI_PAGE;

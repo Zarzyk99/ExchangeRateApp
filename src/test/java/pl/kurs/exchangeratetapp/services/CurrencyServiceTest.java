@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import pl.kurs.exchangeratetapp.exceptions.InvalidInputDataException;
+import pl.kurs.exchangeratetapp.exceptions.LostConnectionException;
 
 import java.math.BigDecimal;
 
@@ -25,7 +26,7 @@ public class CurrencyServiceTest {
     }
 
     @Test
-    public void shouldReturn500PlnFrom100Usd() throws InvalidInputDataException {
+    public void shouldReturn500PlnFrom100Usd() throws InvalidInputDataException, LostConnectionException {
         //given
         Mockito.when(rateService.getRate("USD", "PLN")).thenReturn(new BigDecimal(5.0));
 

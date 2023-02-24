@@ -1,6 +1,7 @@
 package pl.kurs.exchangeratetapp.app;
 
 import pl.kurs.exchangeratetapp.exceptions.InvalidInputDataException;
+import pl.kurs.exchangeratetapp.exceptions.LostConnectionException;
 import pl.kurs.exchangeratetapp.services.*;
 import pl.kurs.exchangeratetapp.util.ObjectMapperHolder;
 
@@ -49,7 +50,7 @@ public class Main {
                         System.err.println("Nie rozpoznano opcji!");
                         printOptions();
                 }
-            } catch (InvalidInputDataException e) {
+            } catch (InvalidInputDataException | LostConnectionException e) {
                 handleException(e);
             } catch (InputMismatchException e) {
                 handleException(e);
