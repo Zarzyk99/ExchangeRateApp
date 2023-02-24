@@ -3,6 +3,7 @@ package pl.kurs.exchangeratetapp.services;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.kurs.exchangeratetapp.exceptions.InvalidInputDataException;
+import pl.kurs.exchangeratetapp.exceptions.LostConnectionException;
 
 
 import java.io.IOException;
@@ -19,14 +20,14 @@ public class RateService implements IRateService {
     }
 
     @Override
-    public BigDecimal getRate(String fromCurrencyMark, String toCurrencyMark) throws InvalidInputDataException {
+    public BigDecimal getRate(String fromCurrencyMark, String toCurrencyMark) throws InvalidInputDataException, LostConnectionException {
         String preparedUrl = urlStringBuilder.buildUrl(fromCurrencyMark);
 
         JsonNode mainNode = null;
         try {
             mainNode = mapper.readTree(new URL(preparedUrl));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new LostConnectionException("Brak dostepu do internetu", e.getCause());
         }
 
 

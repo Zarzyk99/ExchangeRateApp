@@ -1,6 +1,7 @@
 package pl.kurs.exchangeratetapp.services;
 
 import pl.kurs.exchangeratetapp.exceptions.InvalidInputDataException;
+import pl.kurs.exchangeratetapp.exceptions.LostConnectionException;
 
 import java.math.BigDecimal;
 
@@ -13,7 +14,7 @@ public class CurrencyService implements ICurrencyService {
 
 
     @Override
-    public BigDecimal exchange(String currencyFrom, String currencyTo, BigDecimal amount) throws InvalidInputDataException {
+    public BigDecimal exchange(String currencyFrom, String currencyTo, BigDecimal amount) throws InvalidInputDataException, LostConnectionException {
         if (currencyFrom.isBlank() || currencyTo.isBlank())
             throw new InvalidInputDataException("Przekazano błędne dane!");
         if (amount.doubleValue() <= 0) throw new InvalidInputDataException("Wartość musi być większa od 0!");
